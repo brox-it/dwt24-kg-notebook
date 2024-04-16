@@ -30,7 +30,7 @@ o:Job
   a owl:Class ;
   rdfs:isDefinedBy o: ;
   rdfs:label "Job"@en ;
-  rdfs:comment "a job of a person"@en .
+  rdfs:comment "A job of a person."@en .
 
 o:jobId
   a owl:DatatypeProperty ;
@@ -38,7 +38,7 @@ o:jobId
   rdfs:domain o:Job ;
   rdfs:range xsd:string ;
   rdfs:label "jobId"@en ;
-  rdfs:comment "not unique over all jobs"@en ;
+  rdfs:comment "The identifier of the job. Warning: the value does not have to be unique over all jobs."@en ;
   rdfs:seeAlso dcterms:identifier, schema:identifier .
 
 o:jobTitle
@@ -47,7 +47,7 @@ o:jobTitle
   rdfs:domain o:Job ;
   rdfs:range xsd:string ;
   rdfs:label "jobTitle"@en ;
-  rdfs:comment ""@en .
+  rdfs:comment "The job title of the person/job."@en .
 
 o:companyName
   a owl:DatatypeProperty ;
@@ -55,7 +55,7 @@ o:companyName
   rdfs:domain o:Job ;
   rdfs:range xsd:string ;
   rdfs:label "companyName"@en ;
-  rdfs:comment ""@en .
+  rdfs:comment "The name of the job’s company."@en .
 
 o:startDate
   a owl:DatatypeProperty ;
@@ -63,7 +63,7 @@ o:startDate
   rdfs:domain o:Job ;
   rdfs:range xsd:string ;
   rdfs:label "startDate"@en ;
-  rdfs:comment ""@en ;
+  rdfs:comment "When the person started the job."@en ;
   rdfs:seeAlso schema:startDate .
 
 o:endDate
@@ -72,7 +72,7 @@ o:endDate
   rdfs:domain o:Job ;
   rdfs:range xsd:string ;
   rdfs:label "endDate"@en ;
-  rdfs:comment ""@en ;
+  rdfs:comment "When the person ended the job."@en ;
   rdfs:seeAlso schema:endDate .
 
 o:employee
@@ -81,7 +81,7 @@ o:employee
   rdfs:domain o:Job ;
   rdfs:range foaf:Person ;
   rdfs:label "employee"@en ;
-  rdfs:comment ""@en ;
+  rdfs:comment "The person doing the job."@en ;
   rdfs:seeAlso schema:employee .
 
 o:involvesRelevantSkill
@@ -90,7 +90,7 @@ o:involvesRelevantSkill
   rdfs:domain o:Job ;
   rdfs:range o:Skill ;
   rdfs:label "involvesRelevantSkill"@en ;
-  rdfs:comment ""@en .
+  rdfs:comment "A person’s skill that is relevant for the job."@en .
 
 o:belongsToJobCategory
   a owl:ObjectProperty ;
@@ -98,7 +98,7 @@ o:belongsToJobCategory
   rdfs:domain o:Job ;
   rdfs:range o:JobCategory ;
   rdfs:label "belongsToJobCategory"@en ;
-  rdfs:comment ""@en .
+  rdfs:comment "The category of the job."@en .
 
 
 # ---------------- Skill -----------------------------------------------
@@ -107,7 +107,7 @@ o:Skill
   a owl:Class ;
   rdfs:isDefinedBy o: ;
   rdfs:label "Skill"@en ;
-  rdfs:comment ""@en ;
+  rdfs:comment "A skill/competence of a person."@en ;
   rdfs:seeAlso <http://data.europa.eu/esco/model#Skill> .
 
 # dcterms:identifier
@@ -120,7 +120,7 @@ o:SkillDistance
   a owl:Class ;
   rdfs:isDefinedBy o: ;
   rdfs:label "SkillDistance"@en ;
-  rdfs:comment "The distance between two skills."@en .
+  rdfs:comment "The similarity distance between two skills."@en .
 
 o:distanceValue
   a owl:DatatypeProperty ;
@@ -128,7 +128,7 @@ o:distanceValue
   rdfs:domain o:SkillDistance ;
   rdfs:range xsd:integer ;
   rdfs:label "distanceValue"@en ;
-  rdfs:comment "The distance value gets decided/created manually by human reviewers."@en .
+  rdfs:comment "The distance value. 0 is the most similar."@en .
 
 o:ofSkill
   a owl:ObjectProperty ;
@@ -145,7 +145,7 @@ o:JobCategory
   a owl:Class ;
   rdfs:isDefinedBy o: ;
   rdfs:label "JobCategory"@en ;
-  rdfs:comment ""@en .
+  rdfs:comment "The category of the job."@en .
 
 # dcterms:identifier
 
