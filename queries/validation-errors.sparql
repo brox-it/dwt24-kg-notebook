@@ -1,0 +1,16 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT DISTINCT *
+FROM <https://graphs.brox.de/dwt24/data/>
+FROM <https://graphs.brox.de/dwt24/ontologies/>
+FROM <https://graphs.brox.de/dwt24/shacl-shapes/>
+FROM <https://graphs.brox.de/dwt24/shacl-reports/>
+WHERE {
+
+    ?error 
+        a sh:ValidationResult ;
+        sh:resultSeverity ?severity ;
+        sh:focusNode ?affectedInstance ;
+        sh:resultPath ?affectedProperty ;
+        sh:resultMessage ?message .
+
+} LIMIT 50

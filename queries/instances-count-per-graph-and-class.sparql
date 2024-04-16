@@ -1,0 +1,12 @@
+SELECT DISTINCT ?graph ?class (COUNT(DISTINCT ?s) AS ?count) 
+WHERE { 
+
+  GRAPH ?graph { 
+
+    ?s a ?class .
+
+  } 
+
+} 
+GROUP BY ?graph ?class 
+ORDER BY ?graph DESC(?count)
