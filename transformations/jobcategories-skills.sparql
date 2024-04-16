@@ -44,47 +44,47 @@ WHERE {
       fx:trim-strings true ;
       fx:null-string "" .
 
-	  # GroupJobTags
-	  ?root
-		a xyz:GroupJobTags , fx:root ;
-		fx:anySlot ?jobTag .
-	  
-	  # JobTag
-	  ?jobTag
-		a xyz:JobTag ;
-		
-		# JobTag → Id
-		fx:anySlot [ a xyz:Id ; fx:anySlot ?jobTagId ] .
-		
-	  # JobTag → Name
-	  OPTIONAL { ?jobTag fx:anySlot [ a xyz:Name ; fx:anySlot ?jobTagName ] . }
-	  
-	  # JobTag → GroupCompetences
-	  OPTIONAL { 
-		?jobTag fx:anySlot [ a xyz:GroupCompetences ; fx:anySlot ?competence ] . 
-		
-		# JobTag → GroupCompetences → Competence
-		?competence a xyz:Competence .
-		  
-		# JobTag → GroupCompetences → Competence → CompetenceId
-		OPTIONAL { ?competence fx:anySlot [ a xyz:CompetenceId ; fx:anySlot ?competenceId ] . }
-		  
-		# JobTag → GroupCompetences → Competence → CompetenceName
-		OPTIONAL { ?competence fx:anySlot [ a xyz:CompetenceName ; fx:anySlot ?competenceName ] . }
+      # GroupJobTags
+      ?root
+        a xyz:GroupJobTags , fx:root ;
+        fx:anySlot ?jobTag .
+      
+      # JobTag
+      ?jobTag
+        a xyz:JobTag ;
+        
+        # JobTag → Id
+        fx:anySlot [ a xyz:Id ; fx:anySlot ?jobTagId ] .
+        
+      # JobTag → Name
+      OPTIONAL { ?jobTag fx:anySlot [ a xyz:Name ; fx:anySlot ?jobTagName ] . }
+      
+      # JobTag → GroupCompetences
+      OPTIONAL { 
+        ?jobTag fx:anySlot [ a xyz:GroupCompetences ; fx:anySlot ?competence ] . 
+        
+        # JobTag → GroupCompetences → Competence
+        ?competence a xyz:Competence .
+          
+        # JobTag → GroupCompetences → Competence → CompetenceId
+        OPTIONAL { ?competence fx:anySlot [ a xyz:CompetenceId ; fx:anySlot ?competenceId ] . }
+          
+        # JobTag → GroupCompetences → Competence → CompetenceName
+        OPTIONAL { ?competence fx:anySlot [ a xyz:CompetenceName ; fx:anySlot ?competenceName ] . }
 
-		# JobTag → GroupCompetences → Competence → PoolMemberId
-		OPTIONAL { ?competence fx:anySlot [ a xyz:PoolMemberId ; fx:anySlot ?competencePoolMemberId ] . }
-	  }
+        # JobTag → GroupCompetences → Competence → PoolMemberId
+        OPTIONAL { ?competence fx:anySlot [ a xyz:PoolMemberId ; fx:anySlot ?competencePoolMemberId ] . }
+      }
 
-	  # IRIs
-	  BIND( IRI(CONCAT( STR(d:), "JobCategory_", ENCODE_FOR_URI(?jobTagId) )) AS ?iri_JobTag ) .
-	  BIND( IRI(CONCAT( STR(d:), "Person_", ENCODE_FOR_URI(?competencePoolMemberId) )) AS ?iri_PoolMember ) .
-	  BIND( IRI(CONCAT( STR(d:), "Skill_", ENCODE_FOR_URI(?competenceId) )) AS ?iri_Competence ) .
+      # IRIs
+      BIND( IRI(CONCAT( STR(d:), "JobCategory_", ENCODE_FOR_URI(?jobTagId) )) AS ?iri_JobTag ) .
+      BIND( IRI(CONCAT( STR(d:), "Person_", ENCODE_FOR_URI(?competencePoolMemberId) )) AS ?iri_PoolMember ) .
+      BIND( IRI(CONCAT( STR(d:), "Skill_", ENCODE_FOR_URI(?competenceId) )) AS ?iri_Competence ) .
 
-	  # Labels
-	  BIND( CONCAT( "JobCategory", " ", ?jobTagId ) AS ?label_JobTag ) .
-	  BIND( CONCAT( "Person", " ", ?competencePoolMemberId ) AS ?label_PoolMember ) .
-	  BIND( CONCAT( "Skill", " ", ?competenceId ) AS ?label_Competence ) .
+      # Labels
+      BIND( CONCAT( "JobCategory", " ", ?jobTagId ) AS ?label_JobTag ) .
+      BIND( CONCAT( "Person", " ", ?competencePoolMemberId ) AS ?label_PoolMember ) .
+      BIND( CONCAT( "Skill", " ", ?competenceId ) AS ?label_Competence ) .
 
   }
 
