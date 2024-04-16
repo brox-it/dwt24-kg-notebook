@@ -27,7 +27,6 @@ CONSTRUCT {
     a o:Job ;
     rdfs:label ?label_Employment ;
     o:jobId ?employerId ;
-    o:jobTitle ?employerJobTitle ;
     o:employee ?iri_PoolMember ;
     o:belongsToJobCategory ?iri_JobTag .
 
@@ -70,11 +69,6 @@ WHERE {
           
       # <JobTag><GroupEmployers><Employer><EmployerId>
       ?employer fx:anySlot [ a xyz:EmployerId ; fx:anySlot ?employerId ] .
-          
-      # <JobTag><GroupEmployers><Employer><JobTitle>
-      OPTIONAL { 
-        ?employer fx:anySlot [ a xyz:JobTitle ; fx:anySlot ?employerJobTitle ] . 
-      }
 
       # <JobTag><GroupEmployers><Employer><PoolMemberId>
       OPTIONAL { 
