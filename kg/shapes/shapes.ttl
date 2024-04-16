@@ -1,0 +1,93 @@
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix d: <https://data.brox.de/dwt24/> .
+@prefix o: <https://ontologies.brox.de/dwt24/> .
+@prefix dwt24-shape: <https://shapes.brox.de/dwt24/> .
+
+
+dwt24-shape:Person_Properties
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;
+    sh:closed true ;
+    sh:property [ sh:path rdf:type ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:value foaf:Person ] ;
+    sh:property [ sh:path rdfs:label ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path dcterms:identifier ; 	sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+dwt24-shape:Job_Properties
+    a sh:NodeShape ;
+    sh:targetClass o:Job ;
+    sh:closed true ;
+    sh:property [ sh:path rdf:type ; 				sh:minCount 1 ; sh:maxCount 1 ; sh:value o:Job ] ;
+    sh:property [ sh:path rdfs:label ; 				sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:jobId ; 				sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:jobTitle ; 												sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:companyName ; 			sh:maxCount 1 ; 				sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:startDate ; 			sh:maxCount 1 ; 				sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:endDate ; 								sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:employee ; 				sh:minCount 1 ; sh:maxCount 1 ; sh:class foaf:Person] ;
+    sh:property [ sh:path o:involvesRelevantSkill ; 								sh:class o:Skill ] ;
+    sh:property [ sh:path o:belongsToJobCategory ; 					sh:maxCount 1 ; sh:class o:JobCategory ] .
+
+dwt24-shape:JobCategory_Properties
+    a sh:NodeShape ;
+    sh:targetClass o:JobCategory ;
+    sh:closed true ;
+    sh:property [ sh:path rdf:type ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:value o:JobCategory ] ;
+    sh:property [ sh:path rdfs:label ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path dcterms:identifier ; 	sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path dcterms:title ; 		sh:minCount 1 ; 				sh:datatype xsd:string ] .
+
+dwt24-shape:Skill_Properties
+    a sh:NodeShape ;
+    sh:targetClass o:Skill ;
+    sh:closed true ;
+    sh:property [ sh:path rdf:type ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:value o:Skill ] ;
+    sh:property [ sh:path rdfs:label ; 			sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path dcterms:identifier ; 	sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path dcterms:title ; 		 								sh:datatype xsd:string ] .
+
+dwt24-shape:SkillDistance_Properties
+    a sh:NodeShape ;
+    sh:targetClass o:SkillDistance ;
+    sh:closed true ;
+    sh:property [ sh:path rdf:type ; 		sh:minCount 1 ; sh:maxCount 1 ; sh:value o:SkillDistance ] ;
+    sh:property [ sh:path rdfs:label ; 		sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path o:distanceValue ; sh:minCount 1 ; sh:maxCount 2 ; sh:datatype xsd:integer ] ; # should have "sh:maxCount 1", but data contains errors
+    sh:property [ sh:path o:ofSkill ; 		sh:minCount 2 ; sh:maxCount 2 ; sh:class o:Skill ] .
+
+
+# Counting instances of a class
+
+dwt24-shape:Person_Count
+    a sh:NodeShape ;
+    sh:targetNode foaf:Person ;
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 2930 ; sh:maxCount 2930 ] .
+
+dwt24-shape:Job_Count
+    a sh:NodeShape ;
+    sh:targetNode o:Job ;
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 20913 ; sh:maxCount 20913 ] .
+
+dwt24-shape:Skill_Count
+    a sh:NodeShape ;
+    sh:targetNode o:Skill ;
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 7549 ; sh:maxCount 7549 ] .
+
+dwt24-shape:JobCategory_Count
+    a sh:NodeShape ;
+    sh:targetNode o:JobCategory ;
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 355 ; sh:maxCount 355 ] .
+
+dwt24-shape:SkillDistance_Count
+    a sh:NodeShape ;
+    sh:targetNode o:SkillDistance ;
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 4631 ; sh:maxCount 4631 ] .

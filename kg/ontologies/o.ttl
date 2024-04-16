@@ -1,0 +1,153 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix o: <https://ontologies.brox.de/dwt24/> .
+
+o:
+  a owl:Ontology ;
+  owl:versionInfo "1.0" ;
+  vann:preferredNamespacePrefix "o" ;
+  vann:preferredNamespaceUri "https://ontologies.brox.de/dwt24/" ;
+  rdfs:label "Tutorial ontology"@en ;
+  rdfs:comment "Data Week 2024 – Tutorial: Empowering Knowledge Graphs with AI"@en .
+
+# ---------------- Person ----------------------------------------------
+
+# foaf:Person
+
+# dcterms:identifier
+
+
+# ---------------- Job -------------------------------------------------
+
+o:Job
+  a owl:Class ;
+  rdfs:isDefinedBy o: ;
+  rdfs:label "Job"@en ;
+  rdfs:comment "a job of a person"@en .
+
+o:jobId
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range xsd:string ;
+  rdfs:label "jobId"@en ;
+  rdfs:comment "not unique over all jobs"@en ;
+  rdfs:seeAlso dcterms:identifier, schema:identifier .
+
+o:jobTitle
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range xsd:string ;
+  rdfs:label "jobTitle"@en ;
+  rdfs:comment ""@en .
+
+o:companyName
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range xsd:string ;
+  rdfs:label "companyName"@en ;
+  rdfs:comment ""@en .
+
+o:startDate
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range xsd:string ;
+  rdfs:label "startDate"@en ;
+  rdfs:comment ""@en ;
+  rdfs:seeAlso schema:startDate .
+
+o:endDate
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range xsd:string ;
+  rdfs:label "endDate"@en ;
+  rdfs:comment ""@en ;
+  rdfs:seeAlso schema:endDate .
+
+o:employee
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range foaf:Person ;
+  rdfs:label "employee"@en ;
+  rdfs:comment ""@en ;
+  rdfs:seeAlso schema:employee .
+
+o:involvesRelevantSkill
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range o:Skill ;
+  rdfs:label "involvesRelevantSkill"@en ;
+  rdfs:comment ""@en .
+
+o:belongsToJobCategory
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:Job ;
+  rdfs:range o:JobCategory ;
+  rdfs:label "belongsToJobCategory"@en ;
+  rdfs:comment ""@en .
+
+
+# ---------------- Skill -----------------------------------------------
+
+o:Skill
+  a owl:Class ;
+  rdfs:isDefinedBy o: ;
+  rdfs:label "Skill"@en ;
+  rdfs:comment ""@en ;
+  rdfs:seeAlso <http://data.europa.eu/esco/model#Skill> .
+
+# dcterms:identifier
+# dcterms:title
+
+
+# ---------------- SkillDistance ---------------------------------------
+
+o:SkillDistance
+  a owl:Class ;
+  rdfs:isDefinedBy o: ;
+  rdfs:label "SkillDistance"@en ;
+  rdfs:comment "The distance between two skills."@en .
+
+o:distanceValue
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:SkillDistance ;
+  rdfs:range xsd:integer ;
+  rdfs:label "distanceValue"@en ;
+  rdfs:comment "The distance value gets decided/created manually by human reviewers."@en .
+
+o:ofSkill
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy o: ;
+  rdfs:domain o:SkillDistance ;
+  rdfs:range o:Skill ;
+  rdfs:label "ofSkill"@en ;
+  rdfs:comment "For referencing both skills."@en .
+
+
+# ---------------- JobCategory -----------------------------------------
+
+o:JobCategory
+  a owl:Class ;
+  rdfs:isDefinedBy o: ;
+  rdfs:label "JobCategory"@en ;
+  rdfs:comment ""@en .
+
+# dcterms:identifier
+
+# dcterms:title
+
