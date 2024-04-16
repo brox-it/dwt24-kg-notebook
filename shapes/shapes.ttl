@@ -70,24 +70,24 @@ dwt24-shape:SkillDistance_Properties
 dwt24-shape:Person_Count
     a sh:NodeShape ;
     sh:targetNode foaf:Person ;
-    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 2930 ; sh:maxCount 2930 ] .
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:severity sh:Warning ; sh:minCount 2930 ; sh:maxCount 2930 ] .
 
 dwt24-shape:Job_Count
     a sh:NodeShape ;
     sh:targetNode o:Job ;
-    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 20913 ; sh:maxCount 20913 ] .
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:severity sh:Warning ; sh:minCount 20913 ; sh:maxCount 20913 ] .
 
 dwt24-shape:Skill_Count
     a sh:NodeShape ;
     sh:targetNode o:Skill ;
-    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 7549 ; sh:maxCount 7549 ] .
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:severity sh:Warning ; sh:minCount 7549 ; sh:maxCount 7549 ] .
 
 dwt24-shape:JobCategory_Count
     a sh:NodeShape ;
     sh:targetNode o:JobCategory ;
-    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 355 ; sh:maxCount 355 ] .
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:severity sh:Warning ; sh:minCount 355 ; sh:maxCount 355 ] .
 
 dwt24-shape:SkillDistance_Count
     a sh:NodeShape ;
     sh:targetNode o:SkillDistance ;
-    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:minCount 4631 ; sh:maxCount 4631 ] .
+    sh:property [ sh:path [ sh:inversePath rdf:type ] ; sh:severity sh:Warning ; sh:minCount 4631 ; sh:maxCount 4631 ] .
