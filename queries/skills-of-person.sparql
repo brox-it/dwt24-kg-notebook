@@ -1,0 +1,33 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+PREFIX o: <https://ontologies.brox.de/dwt24/>
+PREFIX d: <https://data.brox.de/dwt24/>
+
+SELECT DISTINCT ?skillTitle
+FROM <https://graphs.brox.de/dwt24/data/>
+FROM <https://graphs.brox.de/dwt24/ontologies/>
+WHERE {
+
+    # ID of the person you are interested in
+    BIND( "4181" AS ?personId )
+    
+    ?person 
+        a foaf:Person ;
+        dcterms:identifier ?personId .
+    
+    ?job 
+        a o:Job ;
+        o:employee ?person ;
+        o:involvesRelevantSkill ?skill .
+    
+    ?skill
+        a o:Skill ;
+        dcterms:title ?skillTitle .
+
+}
+ORDER BY ?skillTitle
